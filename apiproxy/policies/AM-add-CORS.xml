@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-add-CORS">
+    <DisplayName>AM-add-CORS</DisplayName>
+    <Add>
+        <Headers>
+            <Header name="Access-Control-Allow-Origin">{request.header.origin}</Header>
+            <Header name="Access-Control-Allow-Headers">{accessControlRequestHeaders}</Header>
+            <!-- Set to a larger value in seconds, this allows for testing  -->
+            <Header name="Access-Control-Max-Age">60</Header>
+            <Header name="Access-Control-Allow-Methods">GET, PUT, POST, DELETE</Header>
+            <Header name="X-CORS">true</Header>
+        </Headers>
+    </Add>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

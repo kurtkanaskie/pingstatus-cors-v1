@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="12" name="pingstatus-cors-v1">
+    <Basepaths>/pingstatus/kurtv1</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1532356630470</CreatedAt>
+    <CreatedBy>kurtkanaskie@google.com</CreatedBy>
+    <Description>commit  from a local branch by kurtkanaskie</Description>
+    <DisplayName>pingstatus-kurtv1</DisplayName>
+    <LastModifiedAt>1550605945934</LastModifiedAt>
+    <LastModifiedBy>kurtkanaskie@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:a03e2e4d380f22da44f078f66c8c5ea4133e12233b34b61cac1c0e70e442af63246ad794d340d693998b828591c1e968cbedceeb38707346cd290134ec4b4e21</ManifestVersion>
+    <Policies>
+        <Policy>AM-add-CORS</Policy>
+        <Policy>AM-create-ping-response</Policy>
+        <Policy>AM-create-status-response</Policy>
+        <Policy>AM-set-get-status-pathsuffix</Policy>
+        <Policy>AM-set-standard-error-response</Policy>
+        <Policy>JS-get-access-control-headers</Policy>
+        <Policy>JS-proxy-fault-rules</Policy>
+        <Policy>JS-set-time-data</Policy>
+        <Policy>RF-path-suffix-not-found</Policy>
+        <Policy>VA-header</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>openapi://association.json</Resource>
+        <Resource>jsc://JS-get-access-control-headers.js</Resource>
+        <Resource>jsc://JS-proxy-fault-rules.js</Resource>
+        <Resource>jsc://JS-set-time-data.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
