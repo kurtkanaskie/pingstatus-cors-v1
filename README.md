@@ -38,3 +38,13 @@ Install with mvn. Replacer copies and replaces the resources dir into the target
 
 ### Skip Creating Apps and Overwrite latest revision
 * mvn -P test install -Ddeployment.suffix= -Dapigee.options=update -Dapigee.config.options=update -Dskip.apps=true -Dapigee.config.dir=target/resources/edge -Dapigee.config.exportDir=target/test/integration -Dapi.testtag=@health
+
+### Infrequently used commands
+* mvn jshint:lint
+* mvn -Ptest exec:exec@unit
+
+* mvn -Ptest apigee-config:targetservers -Dapigee.config.options=update
+* mvn -Ptest apigee-config:developerapps -Dapigee.config.options=update
+* mvn -Ptest apigee-config:apiproducts -Dapigee.config.options=update
+* mvn -Ptest apigee-config:kvms -Dapigee.config.options=update
+* mvn -P test apigee-config:exportAppKeys -Dapigee.config.exportDir=appkeys
