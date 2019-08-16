@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cors-v1">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1556304302596</CreatedAt>
+    <CreatedBy>defaultUser</CreatedBy>
+    <Description>Hard coded test - Use in ProxyPreFlow or OPTIONS conditional flow named "CORS", ProxyPostFlow and DefaultFaultRule, automatically detects location and applies appropriate policy.</Description>
+    <DisplayName>cors-v1</DisplayName>
+    <LastModifiedAt>1565965245052</LastModifiedAt>
+    <LastModifiedBy>defaultUser</LastModifiedBy>
+    <ManifestVersion>SHA-512:f59d19b4f37bc1600784e9936b7db58b6588c1a3e84580b2b54f65804386a7987c6d0808e7a5e4340f987326051216c3d9617d495fa2acab6f00e031bfd47cc6</ManifestVersion>
+    <Policies>
+        <Policy>AM-cors-save-headers</Policy>
+        <Policy>AM-cors-set-headers</Policy>
+        <Policy>AM-debug</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

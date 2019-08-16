@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-debug">
+    <DisplayName>AM-debug</DisplayName>
+    <AssignVariable>
+        <Name>debug_request_headers</Name>
+        <Value/>
+        <Ref>request.header.Access-Control-Request-Headers</Ref>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>debug_request_headers_template</Name>
+        <Value/>
+        <Template>{substring(request.header.Access-Control-Request-Headers.values,1,-1)}</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

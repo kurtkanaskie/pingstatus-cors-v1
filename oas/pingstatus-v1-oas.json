@@ -1,14 +1,14 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Ping Status",
+    "description": "Ping Status with CORS",
     "version": "1.0.0",
-    "title": "pingstatus-v1",
+    "title": "pingstatus-cors-v1",
     "contact": {
       "email": "kurtkanaskie@google.com"
     }
   },
-  "host": "kurtkanaskietrainer-trial-test.apigee.net",
+  "host": "amer-demo13-test.apigee.net",
   "schemes": [
     "https"
   ],
@@ -17,10 +17,18 @@
     "x-apikey": {
       "in": "header",
       "name": "X-APIKey",
-      "description": "API Key also known as client_id.",
+      "description": "API Key also known as client_id. (J6cFWC6Dsan5FdaTX39aF7kOieXmHako)",
       "required": true,
       "type": "string",
-      "default": "nvLcdFvhU0XbiPisGt83qUjQeAAgN6GY"
+      "default": "J6cFWC6Dsan5FdaTX39aF7kOieXmHako"
+    },
+    "y-apikey": {
+      "in": "header",
+      "name": "Y-APIKey",
+      "description": "Another API Key also known as client_id.",
+      "required": true,
+      "type": "string",
+      "default": "xyz"
     }
   },
   "paths": {
@@ -36,10 +44,18 @@
           {
             "in": "header",
             "name": "X-APIKey",
-            "description": "API Key also known as client_id.",
+            "description": "API Key also known as client_id. (J6cFWC6Dsan5FdaTX39aF7kOieXmHako)",
             "required": true,
             "type": "string",
-            "default": "nvLcdFvhU0XbiPisGt83qUjQeAAgN6GY"
+            "default": "J6cFWC6Dsan5FdaTX39aF7kOieXmHako"
+          },
+          {
+            "in": "header",
+            "name": "Y-APIKey",
+            "description": "Y API Key also known as client_id.",
+            "required": true,
+            "type": "string",
+            "default": "xyz"
           }
         ],
         "responses": {
@@ -168,10 +184,10 @@
           {
             "in": "header",
             "name": "X-APIKey",
-            "description": "API Key also known as client_id.",
+            "description": "API Key also known as client_id. (J6cFWC6Dsan5FdaTX39aF7kOieXmHako)",
             "required": true,
             "type": "string",
-            "default": "nvLcdFvhU0XbiPisGt83qUjQeAAgN6GY"
+            "default": "J6cFWC6Dsan5FdaTX39aF7kOieXmHako"
           }
         ],
         "responses": {

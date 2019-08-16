@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-CORS-save-headers" version="SHA-512:a2a5db31a0238f6f031db5b6fb001a6b15b2119219c99119e3bfadb5defb502ff98d5426a8545fa487e962f98fdbe6b43f514d169a38d5e90f52b924d70b80f1"/>
+        <VersionInfo resourceName="AM-CORS-set-headers" version="SHA-512:9f0a417134a74a55edcd62c04ffac6e0cced722a6db713d19a7b29c49583ad28aa581e859d2cd597f02ca7aa9556186013eba42f641de1919e21f5eac29afb31"/>
+        <VersionInfo resourceName="AM-create-ping-response" version="SHA-512:05028b215feb22491eff56db303275334aa0091b8cc03aa07811a42b51013c8389568e4f9f3c8ffedba3bb865544d05af1077d1f0a5154db9145037066bc19c5"/>
+        <VersionInfo resourceName="AM-create-status-response" version="SHA-512:1dbaab21bb64ef3d06e56eedcc90e249eb1e20573b1a8981b0708ed323d3ce5d0b73bd6c68a76011c80a4d432b2ff127020106eb24c119d03bc238d2c98c3992"/>
+        <VersionInfo resourceName="AM-debug" version="SHA-512:d72c6d6007b7adc4e7c67b5c11e71e9fab59831ae39923e7654ca4b6e3d09f35aa7b12efa3ec925c95041e226872f9f938524b8b52499b4703a8428d02769bda"/>
+        <VersionInfo resourceName="AM-set-get-status-pathsuffix" version="SHA-512:0b21cabbdfb39c3b47433f00ba87fc38474e369416b8323ec091827e4cf10be888343b7de0ff0e7ee0fb291494fb46667def614a23bd03feb4ac583bf283ea15"/>
+        <VersionInfo resourceName="AM-set-standard-error-response" version="SHA-512:01a19a3d88efd8759130cb18197d6130fea7a101254c01a8d338ee21071719a77f38c6f66e6ff918639d470a9a0c2abeed1f01388c9371637a8f350fe5676d0e"/>
+        <VersionInfo resourceName="FC-cors-v1" version="SHA-512:bc1665d2c9f51cdf3b6ae73293df07fa654bc84f713328618b476225a295e0b5786b369ed0d749ca475ab8669a0b6325b684e8bb4e0e163b17d470577420b9de"/>
+        <VersionInfo resourceName="JS-proxy-fault-rules" version="SHA-512:9a0a8489863c543f0d2ef35428a9ef590e1979826a2d66ac98bb6fcb1bbe62d88c927c6b4f499c8234c27c3e7a60dbd0d6ccfa7b458d26aed049dbdede1f5507"/>
+        <VersionInfo resourceName="JS-set-time-data" version="SHA-512:721be34da1651003f6e9c52d9ce7842e54b637015d08f91fe69885716be0be06775cb89c2bab920f7ae2cfe91d4680de9059676cf9955b9acdff2fd22158afad"/>
+        <VersionInfo resourceName="RF-path-suffix-not-found" version="SHA-512:12c3d20f0aadc6f56576dd98c5940bb2bd28b2aa86ab5da8947c9ea08f877586eea21dc7edcddd378fedf61ebe6e1f84c449f053c4d7e8c645c57a982491aa7c"/>
+        <VersionInfo resourceName="VA-header" version="SHA-512:40bf02c829fcf6d4c866021c1509f9e710e411336eeda24439f5c8e33c598351a36a668cd421a46f0edf25d69db5c583a1851f18c6f652108810491943f90161"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:c2c6175e3012f93a4bbc9c46ff44ed0a54cf8f740cc6514b95124920881dca3f413f895105af4645557ffd78cb7e798c711d8cc470e7f7b8d86c7887c8a5700c"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://JS-proxy-fault-rules.js" version="SHA-512:3fc9f92a4bd27322849e1d578bf8c73545e73e134c8986f485bcd631ba5e7bafdd57091a2bba2f251647dde531a08cc7ddca649bf60670dc03436c3d704dbff0"/>
+        <VersionInfo resourceName="jsc://JS-set-time-data.js" version="SHA-512:ef7da438bdccb0b97bb2cfcf5c33e76b411edd431d2d312321784d48c5ad809158ab32a041ec2a73395cd6918e049e64c04b1b4b95e3d01efdae158c37962b82"/>
+        <VersionInfo resourceName="openapi://association.json" version="SHA-512:34f3d2f5442c294e519b71e707f133f8cd97e1e279c87a99c2391602d02b403ff6e593e23b24e2ba64b6f437243c976de98b0635333f2266338c7bb09cc6d968"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:af6d160ea4d67cbdd965fea7714a38fd618b991cc5357e810307459f90483a5e330c5da538b054f61c2d8d2b78724a199a8f5c7b0749336aa552ffed07117fec"/>
+    </TargetEndpoints>
+</Manifest>

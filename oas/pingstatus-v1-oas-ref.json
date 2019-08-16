@@ -20,7 +20,7 @@
           "description": "API Key also known as client_id.",
           "required": true,
           "type": "string",
-          "default": "jbibSZW712N5qqjaWMpAD3HM9eMeclMg"
+          "default": "J6cFWC6Dsan5FdaTX39aF7kOieXmHako"
         }
     },
     "paths": {

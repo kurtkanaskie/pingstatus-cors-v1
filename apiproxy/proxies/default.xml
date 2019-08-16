@@ -9,16 +9,16 @@
             <Name>AM-set-standard-error-response</Name>
         </Step>
         <Step>
-            <Name>AM-add-CORS</Name>
+            <Name>AM-CORS-set-headers</Name>
+        </Step>
+        <Step>
+            <Name>FC-cors-v1</Name>
         </Step>
         <AlwaysEnforce>true</AlwaysEnforce>
     </DefaultFaultRule>
     <FaultRules/>
     <PreFlow name="PreFlow">
         <Request>
-            <Step>
-                <Name>JS-get-access-control-headers</Name>
-            </Step>
             <!-- It would be great to use Raise Fault with 200 here to respond to CORS but it shows up in analytics as an error -->
             <Step>
                 <!-- Its annoying to have to check for OPTIONS, especially with lots of pre flow policies or shared flows -->
@@ -31,15 +31,15 @@
     <Flows>
         <Flow name="ping">
             <Description>proxy health check</Description>
-            <Request>
+            <Request/>
+            <Response>
                 <Step>
                     <Name>JS-set-time-data</Name>
                 </Step>
                 <Step>
                     <Name>AM-create-ping-response</Name>
                 </Step>
-            </Request>
-            <Response/>
+            </Response>
             <Condition>(proxy.pathsuffix MatchesPath "/ping") and (request.verb = "GET")</Condition>
         </Flow>
         <Flow name="status">
@@ -55,11 +55,18 @@
             </Response>
             <Condition>(proxy.pathsuffix MatchesPath "/status") and (request.verb = "GET")</Condition>
         </Flow>
-        <Flow name="options CORS">
+        <Flow name="CORS">
             <Description>Match OPTIONS request so it doesn't cause RF in catch-all</Description>
-            <Request/>
+            <Request>
+                <Step>
+                    <Name>AM-CORS-save-headers</Name>
+                </Step>
+                <Step>
+                    <Name>FC-cors-v1</Name>
+                </Step>
+            </Request>
             <Response/>
-            <Condition>(request.verb = "OPTIONS")</Condition>
+            <Condition>(request.verb = "OPTIONS") and (proxy.pathsuffix MatchesPath "/**")</Condition>
         </Flow>
         <Flow name="catch all">
             <Description>Catch any unmatched calls and raise fault</Description>
@@ -76,7 +83,10 @@
         <Request/>
         <Response>
             <Step>
-                <Name>AM-add-CORS</Name>
+                <Name>FC-cors-v1</Name>
+            </Step>
+            <Step>
+                <Name>AM-CORS-set-headers</Name>
             </Step>
         </Response>
     </PostFlow>

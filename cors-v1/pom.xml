@@ -3,9 +3,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>apigee</groupId>
-	<artifactId>pingstatus-cors-v1</artifactId>
+	<artifactId>cors-v1</artifactId>
 	<version>-</version>
-	<name>pingstatus-cors-${deployment.suffix}v1</name>
+	<name>cors-v1</name>
 	<packaging>pom</packaging>
 
 	<pluginRepositories>
@@ -30,8 +30,9 @@
 		<project.root.dir>${basedir}</project.root.dir>
 		<target.root.dir>${basedir}/target</target.root.dir>
 		<deployment.suffix>${user.name}</deployment.suffix>
-		<commit></commit>
-		<branch>a local</branch>
+		<commit>Manually</commit>
+		<branch>local</branch>
+		<buildName>name</buildName>
 	</properties>
 
 	<!-- This is where you add environment specific properties under various profile names 
@@ -46,6 +47,7 @@
 			-->
 			<properties>
 				<apigee.profile>test</apigee.profile>
+				<apigee.apitype>sharedflow</apigee.apitype>
 				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -64,6 +66,7 @@
 			-->
 			<properties>
 				<apigee.profile>prod</apigee.profile>
+				<apigee.apitype>sharedflow</apigee.apitype>
 				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -79,6 +82,7 @@
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<properties>
 				<apigee.profile>test</apigee.profile>
+				<apigee.apitype>sharedflow</apigee.apitype>
 				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -94,6 +98,7 @@
 			<!-- Uses properties from $HOME/.m2/settings.xml or environment variables via set-edge-env-values used in Jenkins -->
 			<properties>
 				<apigee.profile>test</apigee.profile>
+				<apigee.apitype>sharedflow</apigee.apitype>
 				<apigee.env>${EdgeEnv}</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -108,6 +113,7 @@
 			<id>training-test</id>
 			<properties>
 				<apigee.profile>training-test</apigee.profile>
+				<apigee.apitype>sharedflow</apigee.apitype>
 				<apigee.env>test</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -122,6 +128,7 @@
 			<id>training-prod</id>
 			<properties>
 				<apigee.profile>training-prod</apigee.profile>
+				<apigee.apitype>sharedflow</apigee.apitype>
 				<apigee.env>prod</apigee.env>
 				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
 				<apigee.apiversion>v1</apigee.apiversion>
@@ -148,14 +155,14 @@
 
 		<plugins>
 
-			<!-- run jslint -->
+			<!-- run jshint -->
 			<plugin>
 				<groupId>com.cj.jshintmojo</groupId>
 				<artifactId>jshint-maven-plugin</artifactId>
 				<version>1.6.0</version>
 				<executions>
 					<execution>
-						<id>jslint</id>
+						<id>jshint</id>
 						<phase>validate</phase>
 						<goals>
 							<goal>lint</goal>
@@ -165,7 +172,7 @@
 				<configuration>
 					<options>curly,eqeqeq,forin,latedef,undef,noempty,nonew,unused</options>
 					<directories>
-						<directory>apiproxy/resources/jsc</directory>
+						<directory>sharedflowbundle/resources/jsc</directory>
 					</directories>
 					<reporter>jslint</reporter>
 				</configuration>
@@ -190,10 +197,7 @@
 									<directory>${project.root.dir}</directory>
 									<filtering>true</filtering>
 									<includes>
-										<include>resources/**</include>
-										<include>apiproxy/**</include>
-										<include>test/integration/**</include>
-										<include>test/performance/**</include>
+										<include>sharedflowbundle/**</include>
 									</includes>
 								</resource>
 							</resources>
@@ -203,58 +207,11 @@
 					</execution>
 				</executions>
 			</plugin>
-			
-			<plugin>
-				<groupId>com.google.code.maven-replacer-plugin</groupId>
-				<artifactId>replacer</artifactId>
-				<version>1.5.2</version>
-				<executions>
-					<execution>
-						<id>replace</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>replace</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<basedir>${target.root.dir}</basedir>
-					<includes>
-						<include>apiproxy/pingstatus-cors-v1.xml</include>
-						<include>apiproxy/proxies/default.xml</include>
-						<include>test/integration/test-config.json</include>
-						<include>resources/edge/org/apiProducts.json</include>
-						<include>resources/edge/org/developerApps.json</include>
-					</includes>
-					<replacements>
-						<replacement>
-							<token>/pingstatus-cors/v1</token>
-							<value>/pingstatus-cors/${deployment.suffix}v1</value>
-						</replacement>
-						<replacement>
-							<token>pingstatus-cors-v1</token>
-							<value>pingstatus-cors-${deployment.suffix}v1</value>
-						</replacement>
-						<replacement>
-							<token>API_NORTHBOUND_DOMAIN</token>
-							<value>${api.northbound.domain}</value>
-						</replacement>
-						<replacement>
-							<token>@DESCRIPTION</token>
-							<value>commit ${commit} from ${branch} branch by ${user.name}</value>
-						</replacement>
-						<replacement>
-							<token>APIGEE_ENVIRONMENT</token>
-							<value>${apigee.env}</value>
-						</replacement>
-					</replacements>
-				</configuration>
-			</plugin>
 
 			<plugin>
 				<groupId>io.apigee.build-tools.enterprise4g</groupId>
 				<artifactId>apigee-edge-maven-plugin</artifactId>
-				<version>1.1.6</version>
+				<version>1.1.4</version>
 				<executions>
 					<execution>
 						<id>configure-bundle-step</id>
@@ -274,141 +231,11 @@
 				</executions>
 			</plugin>
 
-			<!-- Configuration -->
-            <plugin>
-                <groupId>com.apigee.edge.config</groupId>
-                <artifactId>apigee-config-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <executions>
-                    <execution>
-                        <id>create-config-cache</id>
-                        <phase>verify</phase>                        
-                        <goals>
-                            <goal>caches</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>create-config-targetserver</id>
-                        <phase>verify</phase>                        
-                        <goals>
-                            <goal>targetservers</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>create-config-kvm</id>
-                        <phase>verify</phase>                        
-                        <goals>
-                            <goal>keyvaluemaps</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>create-config-apiproduct</id>
-                        <phase>install</phase>                        
-                        <goals>
-                            <goal>apiproducts</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>create-config-developer</id>
-                        <phase>install</phase>                        
-                        <goals>
-                            <goal>developers</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>create-config-app</id>
-                        <phase>install</phase>                        
-                        <configuration>
-                            <skip>${skip.apps}</skip>
-                        </configuration>
-                        <goals>
-                            <goal>apps</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-						<id>export-config-app</id>
-						<phase>install</phase>
-						<configuration>
-                            <skip>${skip.export}</skip>
-                        </configuration>
-						<goals>
-							<goal>exportAppKeys</goal>
-						</goals>
-					</execution>
-                </executions>
-            </plugin>   
-
-            <plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.3.2</version>
-				<executions>
-					<!-- npm install -->
-					<execution>
-						<id>npm-install</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>npm</executable>
-							<commandlineArgs>
-								install
-							</commandlineArgs>
-						</configuration>
-					</execution>
-					<!-- run apigeelint -->
-					<execution>
-						<id>apigeelint</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>node</executable>
-							<commandlineArgs>
-								./node_modules/apigeelint/cli.js -s ./apiproxy -f table
-							</commandlineArgs>
-						</configuration>
-					</execution>
-					<!-- run unit tests -->
-					<execution>
-						<id>unit</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>node</executable>
-							<commandlineArgs>
-								./node_modules/mocha/bin/mocha test/unit
-							</commandlineArgs>
-						</configuration>
-					</execution>
-					<!-- run integration tests -->
-					<execution>
-						<id>integration</id>
-						<phase>install</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>node</executable>
-							<commandlineArgs>
-								./node_modules/cucumber/bin/cucumber.js target/test/integration/features --tags ${api.testtag}
-							</commandlineArgs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-            <!-- cleaning dirs -->
+			<!-- cleaning dirs -->
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>2.5</version>
-				<configuration>
-					<skip>${skip.clean}</skip>
-				</configuration>
+
 				<executions>
 					<execution>
 						<id>auto-clean-init</id>
@@ -417,7 +244,7 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
-					<!-- you can leave the target dir for debugging, post mortem by commenting this out -->
+					<!-- leave the target dir for debugging, post mortem -->
 					<execution>
 						<id>auto-clean-install</id>
 						<phase>install</phase>
@@ -425,6 +252,7 @@
 							<goal>clean</goal>
 						</goals>
 					</execution>
+					<!-- -->
 				</executions>
 			</plugin>
 		</plugins>

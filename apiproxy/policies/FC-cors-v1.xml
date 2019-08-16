@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="false" name="FC-cors-v1">
+    <DisplayName>FC-cors-v1</DisplayName>
+    <!-- This works if the SF is not present as long as enabled=false -->
+    <SharedFlowBundle>cors-v1</SharedFlowBundle>
+</FlowCallout>
